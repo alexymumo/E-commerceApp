@@ -14,7 +14,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun CartScreen() {
+fun NotificationScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -22,11 +22,12 @@ fun CartScreen() {
             .wrapContentSize(Alignment.Center)
     ) {
         Text(
-            text = "Cart Screen",
+            text = "Notifications Screen",
             fontWeight = FontWeight.Bold,
             modifier = Modifier.align(Alignment.CenterHorizontally),
             textAlign = TextAlign.Center,
             fontSize = 20.sp
         )
     }
+
 }

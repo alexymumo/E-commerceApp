@@ -8,3 +8,8 @@ data class Product(
     val price: String,
     val title: String
 )
+
+data class ProductResponse(
+    val products: List<Product>,
+    val errorMessage: String
+)

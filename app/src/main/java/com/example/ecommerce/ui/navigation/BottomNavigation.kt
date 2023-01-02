@@ -29,6 +29,9 @@ fun BottomNav(navController: NavController) {
                 icon = {
                        Icon(painterResource(id = item.icon), contentDescription = null)
                 },
+                alwaysShowLabel = true,
+                selectedContentColor = Color.Black ,
+                unselectedContentColor = Color.Black.copy(0.4f, 0.1f),
                 label = { Text(text = item.title, fontSize = 9.sp) },
                 selected = currentRoute == item.route,
                 onClick = {

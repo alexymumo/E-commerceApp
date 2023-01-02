@@ -2,7 +2,6 @@ package com.example.ecommerce.ui.views
 
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
@@ -10,15 +9,14 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.ecommerce.R
+import coil.compose.rememberImagePainter
+import com.example.ecommerce.data.models.Product
 
 @Composable
-fun ProductCard() {
+fun ProductCard(product: Product) {
     Card(
         modifier = Modifier
             .padding(all = 8.dp)
@@ -31,8 +29,9 @@ fun ProductCard() {
         Row(
             verticalAlignment = Alignment.CenterVertically
         ) {
+            val imagePainter = rememberImagePainter(data = product.image)
             Image(
-                painter = painterResource(id = R.drawable.ic_launcher_background),
+                painter = imagePainter,
                 modifier = Modifier
                     .size(130.dp)
                     .padding(8.dp),
@@ -41,18 +40,17 @@ fun ProductCard() {
             )
             Column(Modifier.padding(8.dp)) {
                 Text(
-                    text = "Jacket",
+                    text = product.title,
                     style = MaterialTheme.typography.h4,
                     color = MaterialTheme.colors.primary
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
-                    text = "$8",
+                    text = product.price,
                     style = MaterialTheme.typography.h4,
                     color = MaterialTheme.colors.primary
                 )
             }
-
         }
 
     }
@@ -67,5 +65,4 @@ fun ProductCard() {
 )
 @Composable
 fun ProductCardPreview() {
-    ProductCard()
 }

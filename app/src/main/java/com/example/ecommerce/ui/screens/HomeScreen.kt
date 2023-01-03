@@ -8,6 +8,7 @@ import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -19,8 +20,16 @@ import com.example.ecommerce.ui.views.ProductCard
 fun HomeScreen(
     viewModel: ProductViewModel = hiltViewModel()
 ) {
-    val state by viewModel.state.collectAsState()
+    val state = viewModel.state.value
+    //val state by viewModel.productResponse.observeAsState()
 
+    LazyColumn {
+        items(state.items) { items ->
+            ProductCard(product = items)
+        }
+    }
+
+    /*
     LazyColumn {
         if (state.isEmpty()) {
             item {
@@ -35,5 +44,5 @@ fun HomeScreen(
 
             }
         }
-    }
+    }*/
 }

@@ -1,5 +1,7 @@
 package com.example.ecommerce.ui.viewmodels
 
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,21 +13,16 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class ProductViewModel @Inject constructor(private val productRepository: ProductRepository): ViewModel() {
 
-    private val _productResponse = MutableLiveData<NetworkResult<List<Product>>>()
-    val productResponse: LiveData<NetworkResult<List<Product>>> = _productResponse
+    private val _state = mutableStateOf(UiState())
+    val state: State<UiState> = _state
 
-    /*
-    private val _state = MutableStateFlow(emptyList<Product>())
-    val state: StateFlow<List<Product>>
-        get() = _state
-
-     */
 
     init {
         getProducts()
@@ -33,11 +30,33 @@ class ProductViewModel @Inject constructor(private val productRepository: Produc
 
     private fun getProducts() {
         viewModelScope.launch {
+            productRepository.getProducts().collectLatest { products ->
+                when(products) {
+                    is NetworkResult.Success -> {
+                        _state.value = state.value.copy(items = products.data, loading = false)
+                    }
+                    is NetworkResult.Failure -> {
+
+                    }
+                    is NetworkResult.Loading -> {
+
+                    }
+
+                }
+            }
+        }
+    }
+
+    /*
+    private fun getProducts() {
+        viewModelScope.launch {
             productRepository.getProducts().collect {
                 _productResponse.postValue(it)
             }
         }
     }
+
+     */
 
     /*
     init {

@@ -2,6 +2,8 @@ package com.example.ecommerce.di
 
 
 import com.example.ecommerce.data.api.ApiService
+import com.example.ecommerce.data.repository.ProductRepository
+import com.example.ecommerce.data.repository.ProductRepositoryImpl
 import com.example.ecommerce.utils.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -28,9 +30,9 @@ object NetworkModule {
     fun providesOkhttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         val okHttpClient = OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
-            .connectTimeout(30, TimeUnit.SECONDS)
-            .writeTimeout(30, TimeUnit.SECONDS)
-            .readTimeout(30, TimeUnit.SECONDS)
+            .connectTimeout(5, TimeUnit.SECONDS)
+            .writeTimeout(5, TimeUnit.SECONDS)
+            .readTimeout(5, TimeUnit.SECONDS)
         return okHttpClient.build()
     }
 
@@ -43,6 +45,12 @@ object NetworkModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun providesProductRepository(apiService: ApiService) : ProductRepository {
+        return ProductRepositoryImpl(apiService)
     }
 
 }

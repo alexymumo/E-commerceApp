@@ -15,7 +15,7 @@ class ProductRepositoryImpl @Inject constructor(private val apiService: ApiServi
 
         try {
             val product = apiService.getProducts()
-            emit(NetworkResult.Success(product.products))
+            emit(NetworkResult.Success(product))
         } catch (e: IOException) {
             emit(NetworkResult.Failure(errorMessage = "Error occurred"))
         } catch (e: HttpException) {

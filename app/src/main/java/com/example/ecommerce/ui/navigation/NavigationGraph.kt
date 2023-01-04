@@ -5,10 +5,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.ecommerce.ui.screens.CartScreen
-import com.example.ecommerce.ui.screens.ChatScreen
-import com.example.ecommerce.ui.screens.HomeScreen
-import com.example.ecommerce.ui.screens.NotificationScreen
+import com.example.ecommerce.ui.screens.*
 
 @Composable
 fun NavigationGraph(navController: NavHostController) {
@@ -16,8 +13,8 @@ fun NavigationGraph(navController: NavHostController) {
         composable(BottomNavItem.Home.route) {
             HomeScreen()
         }
-        composable(BottomNavItem.Chat.route) {
-            ChatScreen()
+        composable(BottomNavItem.Favorites.route) {
+            FavoriteScreen()
         }
         composable(BottomNavItem.Notification.route) {
             NotificationScreen()

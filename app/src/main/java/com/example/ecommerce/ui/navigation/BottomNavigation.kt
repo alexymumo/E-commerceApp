@@ -14,7 +14,7 @@ fun BottomNav(navController: NavController) {
 
     val items = listOf(
         BottomNavItem.Home,
-        BottomNavItem.Chat,
+        BottomNavItem.Favorites,
         BottomNavItem.Notification,
         BottomNavItem.Cart
     )

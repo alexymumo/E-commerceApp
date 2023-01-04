@@ -46,11 +46,4 @@ object NetworkModule {
             .build()
             .create(ApiService::class.java)
     }
-
-    @Provides
-    @Singleton
-    fun providesProductRepository(apiService: ApiService) : ProductRepository {
-        return ProductRepositoryImpl(apiService)
-    }
-
 }

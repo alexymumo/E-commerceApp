@@ -1,6 +1,6 @@
 package com.example.ecommerce.data.api
 
-import com.example.ecommerce.data.models.Product
+import com.example.ecommerce.data.api.models.Product
 import retrofit2.http.GET
 
 interface ApiService {

@@ -1,6 +1,6 @@
-package com.example.ecommerce.ui.viewmodels
+package com.example.ecommerce.ui.uistates
 
-import com.example.ecommerce.data.models.Product
+import com.example.ecommerce.data.api.models.Product
 
 data class UiState(
     val items: List<Product> = emptyList(),

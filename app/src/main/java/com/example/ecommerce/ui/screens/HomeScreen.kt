@@ -1,5 +1,7 @@
 package com.example.ecommerce.ui.screens
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
@@ -10,7 +12,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.ecommerce.ui.viewmodels.ProductViewModel
-import com.example.ecommerce.ui.views.ProductCard
+import com.example.ecommerce.ui.views.BannerItem
+import com.example.ecommerce.ui.views.ProductItem
 
 @Composable
 fun HomeScreen(
@@ -18,17 +21,26 @@ fun HomeScreen(
 ) {
     val state = viewModel.state.value
 
-    LazyColumn {
-        if (state.loading) {
-            item {
-                CircularProgressIndicator(
-                    modifier = Modifier.fillMaxSize()
-                        .wrapContentSize(align = Alignment.Center)
-                )
+    Column(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        BannerItem()
+
+
+        LazyColumn {
+            if (state.loading) {
+                item {
+                    CircularProgressIndicator(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .wrapContentSize(align = Alignment.Center)
+                    )
+                }
+            }
+            items(state.items) { items ->
+                ProductItem(product = items)
             }
         }
-        items(state.items) { items ->
-            ProductCard(product = items)
-        }
+
     }
 }

@@ -2,7 +2,6 @@ package com.example.ecommerce
 
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
-import com.example.ecommerce.data.api.models.Product
 import com.example.ecommerce.data.cache.dao.FavoriteDao
 import com.example.ecommerce.data.cache.database.AppDatabase
 import com.example.ecommerce.data.cache.model.FavoriteEntity

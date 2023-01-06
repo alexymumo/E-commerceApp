@@ -4,7 +4,7 @@ package com.example.ecommerce.di
 import com.example.ecommerce.data.api.ApiService
 import com.example.ecommerce.data.repository.ProductRepository
 import com.example.ecommerce.data.repository.ProductRepositoryImpl
-import com.example.ecommerce.utils.Constants.BASE_URL
+import com.example.ecommerce.common.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

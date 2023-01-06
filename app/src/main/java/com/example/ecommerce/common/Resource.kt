@@ -1,4 +1,4 @@
-package com.example.ecommerce.utils
+package com.example.ecommerce.common
 
 sealed class Resource<T>(val data: T? = null, val message: String? = null, val code: String? = null) {
     class Success<T>(data: T?) : Resource<T>(data)

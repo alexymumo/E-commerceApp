@@ -1,6 +1,7 @@
 package com.example.ecommerce.ui.activity
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,9 +11,7 @@ import androidx.compose.ui.Modifier
 import com.example.ecommerce.ui.screens.MainScreen
 import com.example.ecommerce.ui.theme.EcommerceTheme
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 
 
 @AndroidEntryPoint
@@ -32,15 +31,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-fun main() = runBlocking {
-    launch {
-        getHello()
-    }
-    println("Hello")
-}
 
-suspend fun getHello() {
-    delay(1000L)
-    println("World")
 
-}
+

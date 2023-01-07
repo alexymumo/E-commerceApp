@@ -4,7 +4,7 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.example.ecommerce.data.cache.dao.FavoriteDao
 import com.example.ecommerce.data.cache.database.AppDatabase
-import com.example.ecommerce.data.cache.model.FavoriteEntity
+import com.example.ecommerce.data.cache.entity.FavoriteEntity
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking

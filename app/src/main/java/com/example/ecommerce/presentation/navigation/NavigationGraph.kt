@@ -2,26 +2,31 @@ package com.example.ecommerce.presentation.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.ecommerce.presentation.screens.CartScreen
-import com.example.ecommerce.presentation.screens.FavoriteScreen
-import com.example.ecommerce.presentation.screens.HomeScreen
-import com.example.ecommerce.presentation.screens.NotificationScreen
+import androidx.navigation.navArgument
+import com.example.ecommerce.presentation.screens.*
 
 @Composable
 fun NavigationGraph(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = BottomNavItem.Home.route) {
-        composable(BottomNavItem.Home.route) {
-            HomeScreen()
+    NavHost(navController = navController, startDestination = NavigationItem.Home.route) {
+        composable(NavigationItem.Home.route) {
+            HomeScreen(navController = navController)
         }
-        composable(BottomNavItem.Favorites.route) {
+
+        /*
+        composable(NavigationItem.Detail.route) {
+            DetailScreen()
+        }
+         */
+        composable(NavigationItem.Favorites.route) {
             FavoriteScreen()
         }
-        composable(BottomNavItem.Notification.route) {
+        composable(NavigationItem.Notification.route) {
             NotificationScreen()
         }
-        composable(BottomNavItem.Cart.route) {
+        composable(NavigationItem.Cart.route) {
             CartScreen()
         }
     }

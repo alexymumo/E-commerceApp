@@ -9,9 +9,13 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.example.ecommerce.presentation.screens.CartScreen
 
 @Composable
 fun TopBar() {
+    val navController = rememberNavController()
     Column {
         TopAppBar(
             elevation = 4.dp,
@@ -24,7 +28,10 @@ fun TopBar() {
                     Icon(Icons.Filled.ArrowBack, null)
                 }
             }, actions = {
-                IconButton(onClick = { /*TODO*/ }) {
+                IconButton(onClick = {
+                    navController.navigate("cart")
+                    //navController.navigate(CartScreen())
+                }) {
                     Icon(Icons.Filled.ShoppingCart, null)
                 }
                 IconButton(onClick = { /*TODO*/ }) {

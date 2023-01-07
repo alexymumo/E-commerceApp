@@ -1,32 +1,41 @@
 package com.example.ecommerce.presentation.views
 
 import android.content.res.Configuration
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CornerBasedShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.ecommerce.domain.model.Product
 
 @Composable
-fun ProductItem(product: Product) {
+fun ProductItem(
+    product: Product,
+    onClick: (product: Product) -> Unit
+) {
+    val navController = rememberNavController()
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .height(170.dp)
             .clickable {
+                //navController.navigate("details")
             }
             .padding(all = 4.dp),
         shape = RoundedCornerShape(8.dp),
@@ -63,6 +72,33 @@ fun ProductItem(product: Product) {
                     //style = MaterialTheme.typography.h4,
                     color = Color.Black
                 )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    fontSize = 14.sp,
+                    text = product.rating.rate.toString(),
+                    color = MaterialTheme.colors.primary
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                CategoryItem(product)
+                Spacer(modifier = Modifier.height(4.dp))
+                Box(
+                    modifier = Modifier
+                        .border(
+                            width = 1.dp,
+                            color = Color.Green,
+                            shape = RoundedCornerShape(50.dp)
+                        )
+                ) {
+                    Text(
+                        textAlign = TextAlign.Center,
+                        color = MaterialTheme.colors.primaryVariant,
+                        style = MaterialTheme.typography.body2,
+                        text = product.rating.rate.toString()
+                    )
+                }
+                IconButton(onClick = { /*TODO*/ }) {
+                    Icon(Icons.Filled.FavoriteBorder, "favorite")
+                }
             }
         }
     }

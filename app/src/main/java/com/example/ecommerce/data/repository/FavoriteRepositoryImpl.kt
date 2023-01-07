@@ -1,7 +1,7 @@
 package com.example.ecommerce.data.repository
 
 import com.example.ecommerce.data.cache.dao.FavoriteDao
-import com.example.ecommerce.data.cache.model.FavoriteEntity
+import com.example.ecommerce.data.cache.entity.FavoriteEntity
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

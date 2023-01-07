@@ -13,10 +13,10 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 fun BottomNav(navController: NavController) {
 
     val items = listOf(
-        BottomNavItem.Home,
-        BottomNavItem.Favorites,
-        BottomNavItem.Notification,
-        BottomNavItem.Cart
+        NavigationItem.Home,
+        NavigationItem.Favorites,
+        NavigationItem.Notification,
+        NavigationItem.Cart
     )
     BottomNavigation(
         backgroundColor = MaterialTheme.colors.primary,
@@ -27,7 +27,7 @@ fun BottomNav(navController: NavController) {
         items.forEach { item ->
             BottomNavigationItem(
                 icon = {
-                       Icon(painterResource(id = item.icon), contentDescription = null)
+                       Icon(painterResource(id = item.icon!!), contentDescription = null)
                 },
                 alwaysShowLabel = true,
                 selectedContentColor = Color.Black ,

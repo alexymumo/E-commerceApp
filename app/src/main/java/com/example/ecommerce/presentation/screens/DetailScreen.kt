@@ -11,9 +11,9 @@ import coil.request.ImageRequest
 import com.example.ecommerce.domain.model.Product
 
 @Composable
-fun DetailScreen(product: Product) {
+fun DetailScreen() {
     Column(modifier = Modifier.fillMaxSize()) {
-        DetailCard(product = product)
+
     }
 }
 

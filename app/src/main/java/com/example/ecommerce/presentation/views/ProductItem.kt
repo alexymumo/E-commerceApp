@@ -1,28 +1,73 @@
 package com.example.ecommerce.presentation.views
 
 import android.content.res.Configuration
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.Card
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.ecommerce.domain.model.Product
 
+
+@Composable
+fun ItemImage(
+    product: Product
+) {
+
+    Column {
+        Card(
+            modifier = Modifier
+                .height(170.dp)
+                .width(160.dp),
+            shape = RoundedCornerShape(10.dp),
+            elevation = 10.dp,
+            backgroundColor = Color.LightGray
+        ) {
+            AsyncImage(
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(product.image)
+                    .crossfade(true)
+                    .build(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight(),
+                contentScale = ContentScale.Crop,
+                contentDescription = "Product image"
+            )
+        }
+        Spacer(modifier = Modifier.height(10.dp))
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = product.title,
+                fontSize = 17.sp,
+                color = Color.Black,
+                fontWeight = FontWeight.Bold
+            )
+            Spacer(modifier = Modifier.height(10.dp))
+            Text(
+                text = "$ ${product.price}",
+                fontSize = 16.sp,
+                color = Color.Black,
+                fontWeight = FontWeight.Bold
+            )
+        }
+    }
+}
+
+/*
 @Composable
 fun ProductItem(
     product: Product,
@@ -102,6 +147,8 @@ fun ProductItem(
         }
     }
 }
+
+ */
 
 
 @Preview(name = "Light Mode")

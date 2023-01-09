@@ -1,35 +1,36 @@
 package com.example.ecommerce.presentation.views
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.ecommerce.R
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun BannerItem() {
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(200.dp)
-                .padding(all = 4.dp),
-            shape = RoundedCornerShape(8.dp),
-            elevation = 20.dp,
-            backgroundColor = Color.LightGray
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.ic_favorite),
-                contentDescription = null
-            )
-        }
+    Column(modifier = Modifier
+        .fillMaxWidth()
+        .padding(all = 4.dp)
+    ) {
+        Text(
+            text = "Welcome,",
+            fontWeight = FontWeight.Bold,
+            fontSize = 20.sp,
+            color = Color.Black
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+        Text(
+            text = "Our Fashions App",
+            color = Color.Gray,
+            fontSize = 16.sp,
+            fontWeight = FontWeight.Bold
+        )
+    }
+
 }
 
 @Preview
@@ -37,3 +38,22 @@ fun BannerItem() {
 fun BannerItemPreview() {
     BannerItem()
 }
+
+
+/*
+Card(
+modifier = Modifier
+.fillMaxWidth()
+.height(200.dp)
+.padding(all = 4.dp),
+shape = RoundedCornerShape(8.dp),
+elevation = 20.dp,
+backgroundColor = Color.LightGray
+) {
+    Image(
+        painter = painterResource(id = R.drawable.ic_favorite),
+        contentDescription = null
+    )
+}
+
+ */

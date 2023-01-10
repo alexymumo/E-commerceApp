@@ -22,7 +22,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -45,6 +47,13 @@ fun HomeScreen(
     ) {
         BannerItem()
         Spacer(modifier = Modifier.height(20.dp))
+        Text(
+            text = "Categories",
+            fontSize = 18.sp,
+            color = Color.Black,
+            textAlign = TextAlign.Start,
+            fontWeight = FontWeight.Bold
+        )
         Row(
             modifier = Modifier.fillMaxWidth()
         ) {
@@ -87,7 +96,9 @@ fun HomeScreen(
             )
         }
         Spacer(modifier = Modifier.height(10.dp))
-        LazyVerticalGrid(columns = GridCells.Fixed(2)) {
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2)
+        ) {
             items(state.products) { product ->
                 ItemImage(product = product)
             }

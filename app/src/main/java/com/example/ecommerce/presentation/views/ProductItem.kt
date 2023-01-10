@@ -12,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -53,6 +54,7 @@ fun ItemImage(
             Text(
                 text = product.title,
                 fontSize = 17.sp,
+                overflow = TextOverflow.Ellipsis,
                 color = Color.Black,
                 fontWeight = FontWeight.Bold
             )

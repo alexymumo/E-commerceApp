@@ -25,7 +25,7 @@ fun NavigationGraph(navController: NavHostController) {
             RegisterScreen()
         }
         composable(NavigationItem.Cart.route) {
-            CartScreen()
+            ForgotPasswordScreen()
         }
     }
 

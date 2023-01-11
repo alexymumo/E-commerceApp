@@ -1,36 +1,67 @@
 package com.example.ecommerce.presentation.views
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.ecommerce.R
 
 @Composable
-fun CategoryItem(category: List<String>) {
-    LazyRow(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(10.dp)
+fun CategoryItem() {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(150.dp)
+            .padding(4.dp),
+        elevation = 10.dp,
+        backgroundColor = Color.White,
+        shape = RoundedCornerShape(8.dp)
     ) {
-        items(category) { item ->
-            Text(
-                text = item,
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(4.dp)
+        ) {
+            Image(
                 modifier = Modifier
-                    .background(Color.Green)
-                    .padding(10.dp)
-                    .clip(
-                    shape = RoundedCornerShape(size = 8.dp)
-                )
+                    .height(100.dp)
+                    .width(100.dp)
+                    .clip(RoundedCornerShape(8.dp)),
+                painter = painterResource(id = R.drawable.img),
+                contentScale = ContentScale.Inside,
+                contentDescription = "cart"
             )
+            Spacer(modifier = Modifier.width(10.dp))
+            Column(
+                verticalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = "Nike Air Max 200",
+                    color = Color.LightGray,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 18.sp
+                )
+                Spacer(modifier = Modifier.height(10.dp))
+                Text(
+                    text = "$78.0",
+                    color = Color.Black,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 18.sp
+                )
+
+            }
+
         }
     }
 }
@@ -40,7 +71,5 @@ fun CategoryItem(category: List<String>) {
 @Preview
 @Composable
 fun CategoryPreview() {
-    CategoryItem(category = list)
+    CategoryItem()
 }
-
-val list = listOf<String>("jewellery", "Footwear", "Fake", "Original")

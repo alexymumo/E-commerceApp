@@ -31,7 +31,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.ecommerce.presentation.viewmodels.ProductViewModel
 import com.example.ecommerce.presentation.views.BannerItem
-import com.example.ecommerce.presentation.views.ItemImage
+import com.example.ecommerce.presentation.views.CustomSearchBar
+import com.example.ecommerce.presentation.views.ProductItem
+import com.example.ecommerce.presentation.views.TopBar
 
 @Composable
 fun HomeScreen(
@@ -45,62 +47,37 @@ fun HomeScreen(
             .fillMaxSize()
             .padding(10.dp)
     ) {
-        BannerItem()
-        Spacer(modifier = Modifier.height(20.dp))
+        //TopBar()
+        //Spacer(modifier = Modifier.height(10.dp))
+        //BannerItem()
+        //Spacer(modifier = Modifier.height(10.dp))
+        CustomSearchBar()
+        Spacer(modifier = Modifier.height(10.dp))
         Text(
-            text = "Categories",
+            text = "Select Category",
             fontSize = 18.sp,
             color = Color.Black,
             textAlign = TextAlign.Start,
+            fontWeight = FontWeight.SemiBold
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+        Text(
+            text = "Popular Products",
+            fontSize = 18.sp,
+            color = Color.Gray,
+            textAlign = TextAlign.Start,
             fontWeight = FontWeight.Bold
         )
-        Row(
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            val value: String by remember { mutableStateOf("") }
-            TextField(
-                value = value,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .shadow(4.dp, shape = CircleShape)
-                    .background(
-                        Color.Transparent, CircleShape
-                    ),
-                shape = MaterialTheme.shapes.medium,
-                maxLines = 1,
-                singleLine = true,
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
-                placeholder = {
-                    Text(
-                        text = "Search...",
-                        color = Color.Gray,
-                        fontSize = 16.sp
-                    )
-                },
-                onValueChange = {
-                },
-                leadingIcon = {
-                    Icon(
-                        imageVector = Icons.Rounded.Search,
-                        tint = MaterialTheme.colors.onBackground,
-                        contentDescription = "Search"
-                    )
-                },
-                trailingIcon = {
-                    Icon(
-                        imageVector = Icons.Rounded.Clear,
-                        tint = MaterialTheme.colors.onBackground,
-                        contentDescription = null
-                    )
-                }
-            )
-        }
         Spacer(modifier = Modifier.height(10.dp))
         LazyVerticalGrid(
             columns = GridCells.Fixed(2)
         ) {
             items(state.products) { product ->
-                ItemImage(product = product)
+                ProductItem(
+                    product = product,
+                    modifier = Modifier.width(150.dp)
+                )
+                //ItemImage(product = product)
             }
 
         }

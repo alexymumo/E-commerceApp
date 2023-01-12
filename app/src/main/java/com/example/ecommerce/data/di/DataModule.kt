@@ -4,6 +4,8 @@ import com.example.ecommerce.common.Constants
 import com.example.ecommerce.data.cache.dao.ProductDao
 import com.example.ecommerce.data.cache.database.AppDatabase
 import com.example.ecommerce.data.remote.api.FakeStoreApi
+import com.example.ecommerce.data.repository.FavoriteRepository
+import com.example.ecommerce.data.repository.FavoriteRepositoryImpl
 import com.example.ecommerce.data.repository.ProductRepositoryImpl
 import com.example.ecommerce.domain.repository.ProductRepository
 import dagger.Module

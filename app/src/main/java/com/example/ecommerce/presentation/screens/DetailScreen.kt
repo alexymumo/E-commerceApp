@@ -20,7 +20,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ecommerce.R
-import com.example.ecommerce.presentation.views.CustomRatingBar
+import com.ramcosta.composedestinations.annotation.Destination
+
 
 @Composable
 fun DetailScreen() {

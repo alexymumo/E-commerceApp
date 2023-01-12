@@ -1,11 +1,35 @@
 package com.example.ecommerce.presentation.navigation
 
-import com.example.ecommerce.R
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.AccountCircle
+import androidx.compose.material.icons.outlined.Favorite
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.ShoppingCart
+import androidx.compose.ui.graphics.vector.ImageVector
 
-sealed class NavigationItem(var title: String, var icon: Int?, var route: String) {
-    object Home : NavigationItem("Home", R.drawable.ic_home, "home")
-    object Cart : NavigationItem("Cart", R.drawable.ic_cart, "cart")
-    object Notification: NavigationItem("Notifications", R.drawable.ic_notifications, "notifications")
-    object Favorites : NavigationItem("Favorites", R.drawable.ic_favorite, "favorites")
-    //object Detail : NavigationItem(null, null, "details")
+sealed class BottomNavItem(
+    val title: String,
+    val route: String,
+    val icon: ImageVector
+) {
+    object Home : BottomNavItem(
+        title = "Home",
+        route = "home",
+        icon = Icons.Outlined.Home
+    )
+    object Cart : BottomNavItem(
+        title = "Cart",
+        route = "cart",
+        icon = Icons.Outlined.ShoppingCart
+    )
+    object Favorite : BottomNavItem(
+        title = "Favorite",
+        route = "favorite",
+        icon = Icons.Outlined.Favorite
+    )
+    object Account : BottomNavItem(
+        title = "Account",
+        route = "account",
+        icon = Icons.Outlined.AccountCircle
+    )
 }

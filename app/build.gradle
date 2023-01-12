@@ -3,11 +3,13 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
+    id 'com.google.devtools.ksp' version '1.6.10-1.0.4'
 }
 
 android {
     namespace 'com.example.ecommerce'
     compileSdk 33
+
 
     defaultConfig {
         applicationId "com.example.ecommerce"
@@ -46,6 +48,13 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
+    applicationVariants.all { variant ->
+        kotlin.sourceSets {
+            getByName(variant.name) {
+                kotlin.srcDir("build/generated/ksp/${variant.name}/kotlin")
+            }
+        }
+    }
 }
 
 dependencies {
@@ -59,6 +68,10 @@ dependencies {
 
     // Navigation
     implementation "androidx.navigation:navigation-compose:$nav_version"
+
+    //
+    implementation 'io.github.raamcosta.compose-destinations:core:1.5.9-beta'
+    ksp 'io.github.raamcosta.compose-destinations:ksp:1.5.9-beta'
 
     // Room
     implementation "androidx.room:room-runtime:$room_version"

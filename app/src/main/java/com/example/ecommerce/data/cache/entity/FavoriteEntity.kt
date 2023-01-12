@@ -10,7 +10,7 @@ data class FavoriteEntity(
     val category: String,
     val description: String,
     val image: String,
-    val price: String,
+    val price: Double,
     val title: String,
     //val rating: RatingEntity
 )

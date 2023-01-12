@@ -20,10 +20,10 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 fun BottomNav(navController: NavController) {
 
     val items = listOf(
-        NavigationItem.Home,
-        NavigationItem.Favorites,
-        NavigationItem.Notification,
-        NavigationItem.Cart
+        BottomNavItem.Home,
+        BottomNavItem.Favorite,
+        BottomNavItem.Cart,
+        BottomNavItem.Account
     )
     BottomNavigation(
         backgroundColor = Color.White,
@@ -36,8 +36,15 @@ fun BottomNav(navController: NavController) {
         val currentRoute = navBackStackEntry?.destination?.route
         items.forEach { item ->
             BottomNavigationItem(
+                modifier = Modifier
+                    .padding(top = 15.dp, end = 15.dp, start = 15.dp, bottom = 15.dp)
+                    .clip(RoundedCornerShape(15.dp, 15.dp, 15.dp, 15.dp))
+                    .fillMaxWidth(),
                 icon = {
-                       Icon(painterResource(id = item.icon!!), contentDescription = null)
+                    Icon(
+                        item.icon,
+                        contentDescription = null
+                    )
                 },
                 alwaysShowLabel = false,
                 selectedContentColor = Color.Black,
@@ -52,7 +59,7 @@ fun BottomNav(navController: NavController) {
                             }
                         }
                         launchSingleTop = true
-                        restoreState
+                        restoreState = true
                     }
                 }
             )

@@ -10,7 +10,7 @@ import com.example.ecommerce.data.cache.entity.ProductEntity
 @Database(
     entities = [FavoriteEntity::class,ProductEntity::class],
     exportSchema = false,
-    version = 1
+    version = 2
 )
 abstract class AppDatabase: RoomDatabase() {
     abstract fun favoriteDao() : FavoriteDao

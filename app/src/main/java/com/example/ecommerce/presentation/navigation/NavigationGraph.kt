@@ -8,23 +8,18 @@ import com.example.ecommerce.presentation.screens.*
 
 @Composable
 fun NavigationGraph(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = NavigationItem.Home.route) {
-        composable(NavigationItem.Home.route) {
+    NavHost(navController = navController, startDestination = BottomNavItem.Home.route) {
+        composable(BottomNavItem.Home.route) {
             HomeScreen(navController = navController)
         }
 
-        /*
-        composable(NavigationItem.Detail.route) {
+        composable(BottomNavItem.Favorite.route) {
             DetailScreen()
         }
-         */
-        composable(NavigationItem.Favorites.route) {
-            DetailScreen()
-        }
-        composable(NavigationItem.Notification.route) {
+        composable(BottomNavItem.Account.route) {
             RegisterScreen()
         }
-        composable(NavigationItem.Cart.route) {
+        composable(BottomNavItem.Cart.route) {
             ForgotPasswordScreen()
         }
     }

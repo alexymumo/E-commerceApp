@@ -1,11 +1,12 @@
 package com.example.ecommerce.data.cache.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.IGNORE
 import androidx.room.Query
-import com.example.ecommerce.data.cache.model.FavoriteEntity
+import com.example.ecommerce.data.cache.entity.FavoriteEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao

@@ -12,6 +12,7 @@ import javax.inject.Inject
 
 class GetProductsUseCase @Inject constructor(private val productRepository: ProductRepository) {
 
+
     operator fun invoke(): Flow<Resource<List<Product>>> = flow {
         try {
             emit(Resource.Loading())

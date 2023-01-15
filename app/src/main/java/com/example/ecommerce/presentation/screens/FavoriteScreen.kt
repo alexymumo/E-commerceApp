@@ -15,9 +15,11 @@ import com.example.ecommerce.presentation.views.FavoriteCard
 fun FavoriteScreen(
     viewModel: FavoriteViewModel = hiltViewModel()
 ) {
-    val state = viewModel.favorites.collectAsState(initial = listOf())
+    val favorites = viewModel.favorite.collectAsState().value
+   // val state = viewModel.favorites.collectAsState(initial = listOf())
     LazyColumn(modifier = Modifier.padding(10.dp)) {
-        items(items = state.value) { item ->
+        items(favorites) { item ->
+            FavoriteCard(favoriteEntity = item)
             //FavoriteCard(favoriteItem = item)
         }
 

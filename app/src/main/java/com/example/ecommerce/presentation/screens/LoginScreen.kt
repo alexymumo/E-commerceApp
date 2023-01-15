@@ -29,9 +29,11 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun LoginScreen() {
+    val navController = rememberNavController()
     Column(modifier = Modifier
         .fillMaxSize()
         .padding(20.dp)
@@ -134,7 +136,8 @@ fun LoginScreen() {
         }
         Spacer(modifier = Modifier.height(20.dp))
         Button(
-            onClick = { },
+            onClick = {
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .background(Color.Transparent)

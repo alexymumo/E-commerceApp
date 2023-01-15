@@ -8,17 +8,18 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.ecommerce.presentation.viewmodels.FavoriteViewModel
 import com.example.ecommerce.presentation.viewmodels.ProductViewModel
 import com.example.ecommerce.presentation.views.CustomSearchBar
 import com.example.ecommerce.presentation.views.ProductItem
-import com.example.ecommerce.presentation.views.TopBar
 
 @Composable
 fun HomeScreen(
@@ -27,16 +28,12 @@ fun HomeScreen(
     navController: NavController
 ) {
     val state = viewModel.state.value
-
+    val navController = rememberNavController()
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(10.dp)
+            .padding(10.dp).testTag("HomeScreen")
     ) {
-        TopBar()
-        Spacer(modifier = Modifier.height(10.dp))
-        //BannerItem()
-        //Spacer(modifier = Modifier.height(10.dp))
         CustomSearchBar()
         Spacer(modifier = Modifier.height(10.dp))
         Text(
@@ -60,12 +57,12 @@ fun HomeScreen(
         ) {
             items(state.products) { product ->
                 ProductItem(
+                    navController = navController,
                     product = product,
                     modifier = Modifier.width(150.dp),
                     viewModel = favoriteViewModel
                 )
             }
-
         }
     }
 }

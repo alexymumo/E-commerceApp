@@ -9,15 +9,32 @@ import com.example.ecommerce.data.cache.entity.FavoriteEntity
 import com.example.ecommerce.data.repository.FavoriteRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class FavoriteViewModel @Inject constructor(private val favoriteRepository: FavoriteRepository): ViewModel() {
 
-    val favorites: Flow<List<FavoriteEntity>> = favoriteRepository.getAllFavorites()
-    //var favorite by mutableStateOf(emptyList<FavoriteEntity>())
+    private val _favorites = MutableStateFlow<List<FavoriteEntity>>(emptyList())
+    val favorite = _favorites.asStateFlow()
+
+    init {
+        getFavorites()
+    }
+
+    private fun getFavorites() {
+        viewModelScope.launch(Dispatchers.IO) {
+            favoriteRepository.getAllFavorites().distinctUntilChanged().collect { favoriteList ->
+                if (favoriteList.isEmpty()) {
+                    _favorites.value = emptyList()
+                } else {
+                    _favorites.value = favoriteList
+                }
+            }
+
+        }
+    }
 
     fun saveFavorite(favoriteEntity: FavoriteEntity) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -30,14 +47,4 @@ class FavoriteViewModel @Inject constructor(private val favoriteRepository: Favo
             favoriteRepository.deleteFavorite(favoriteEntity)
         }
     }
-
-
-    /*
-    fun getFavorites() {
-        viewModelScope.launch {
-            favoriteRepository.getAllFavorites().collect { favorites ->
-                favorite = favorites
-            }
-        }
-    }*/
 }

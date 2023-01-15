@@ -20,10 +20,11 @@ import com.example.ecommerce.data.cache.entity.FavoriteEntity
 
 
 @Composable
-fun FavoriteCard() {
+fun FavoriteCard(favoriteEntity: FavoriteEntity) {
     Card(modifier = Modifier
         .fillMaxWidth()
-        .height(100.dp).padding(10.dp),
+        .height(100.dp)
+        .padding(10.dp),
         elevation = 10.dp,
         shape = RoundedCornerShape(8.dp)
     ) {
@@ -46,7 +47,12 @@ fun FavoriteCard() {
             }
             Spacer(modifier = Modifier.width(10.dp))
             Text(
-                text = "Air Max",
+                text = favoriteEntity.title,
+                fontSize = 18.sp,
+                color = Color.Green
+            )
+            Text(
+                text = favoriteEntity.description,
                 fontSize = 18.sp,
                 color = Color.Green
             )
@@ -57,5 +63,5 @@ fun FavoriteCard() {
 @Preview
 @Composable
 fun FavoriteCardPreview() {
-    FavoriteCard()
+   // FavoriteCard()
 }

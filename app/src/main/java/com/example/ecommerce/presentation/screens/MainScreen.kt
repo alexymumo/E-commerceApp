@@ -7,6 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.ecommerce.presentation.navigation.BottomNav
 import com.example.ecommerce.presentation.navigation.NavigationGraph
 import com.example.ecommerce.presentation.theme.EcommerceTheme
+import com.example.ecommerce.presentation.views.TopBar
 
 @Composable
 fun MainScreen() {
@@ -14,7 +15,7 @@ fun MainScreen() {
         val navController = rememberNavController()
         Scaffold(
             topBar = {
-                //TopBar()
+                TopBar()
             },
             bottomBar = {
                 BottomNav(navController = navController)

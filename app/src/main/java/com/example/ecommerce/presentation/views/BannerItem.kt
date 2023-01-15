@@ -25,7 +25,7 @@ fun BannerItem() {
         Spacer(modifier = Modifier.height(10.dp))
         Text(
             text = "Our Fashions App",
-            color = Color.Gray,
+            color = Color.Gray.copy(1f),
             fontSize = 16.sp,
             fontWeight = FontWeight.Bold
         )
@@ -33,27 +33,9 @@ fun BannerItem() {
 
 }
 
+
 @Preview
 @Composable
 fun BannerItemPreview() {
     BannerItem()
 }
-
-
-/*
-Card(
-modifier = Modifier
-.fillMaxWidth()
-.height(200.dp)
-.padding(all = 4.dp),
-shape = RoundedCornerShape(8.dp),
-elevation = 20.dp,
-backgroundColor = Color.LightGray
-) {
-    Image(
-        painter = painterResource(id = R.drawable.ic_favorite),
-        contentDescription = null
-    )
-}
-
- */

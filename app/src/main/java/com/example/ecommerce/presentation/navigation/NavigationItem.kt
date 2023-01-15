@@ -7,6 +7,7 @@ import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.ui.graphics.vector.ImageVector
 
+
 sealed class BottomNavItem(
     val title: String,
     val route: String,

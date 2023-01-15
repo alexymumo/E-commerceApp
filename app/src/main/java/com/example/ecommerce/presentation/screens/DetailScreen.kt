@@ -19,12 +19,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.navigation.NavController
 import com.example.ecommerce.R
-import com.ramcosta.composedestinations.annotation.Destination
-
+import com.example.ecommerce.domain.model.Product
 
 @Composable
-fun DetailScreen() {
+fun DetailScreen(
+    product: Product,
+    navController: NavController
+) {
     Column(modifier = Modifier.fillMaxSize()) {
         Row(
             modifier = Modifier
@@ -48,13 +52,13 @@ fun DetailScreen() {
                 modifier = Modifier.padding(20.dp)
             ) {
                 Text(
-                    text = "Roller Rabbit",
+                    text = product.title,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
-                    text = "Vado Odelle Dress",
+                    text = product.category,
                     fontWeight = FontWeight.Normal,
                     color = Color.Gray,
                     fontSize = 14.sp
@@ -94,7 +98,8 @@ fun DetailScreen() {
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Normal,
                     color = Color.Gray,
-                    text = "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket."
+                    text = product.description
+                    //text = "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket."
                 )
                 Spacer(modifier = Modifier.height(20.dp))
 
@@ -107,7 +112,7 @@ fun DetailScreen() {
                             fontWeight = FontWeight.Thin
                         )
                         Text(
-                            text = "$198.00",
+                            text = product.price.toString(),
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
                             color = Color.Black
@@ -145,5 +150,38 @@ fun DetailScreen() {
 @Preview
 @Composable
 fun DetailScreenPreview() {
-    DetailScreen()
+    //DetailScreen()
+}
+
+@Composable
+fun DetailItem() {
+    ConstraintLayout(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Surface(color = Color.White) {
+            val (image, title,desc, rating,button) = createRefs()
+            Image(
+                modifier = Modifier
+                    .width(80.dp)
+                    .height(80.dp)
+                    .constrainAs(image) {
+                        top.linkTo(parent.top, margin = 16.dp)
+                    },
+                painter = painterResource(id = R.drawable.img),
+                contentDescription = null
+            )
+            Text(
+                text = "DeadPool",
+                modifier = Modifier.constrainAs(title) {
+                    start.linkTo(image.end, 16.dp)
+                }
+            )
+        }
+    }
+}
+
+@Preview
+@Composable
+fun DetailItemPreview() {
+    DetailItem()
 }

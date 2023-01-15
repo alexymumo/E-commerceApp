@@ -24,18 +24,21 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.ecommerce.R
 import com.example.ecommerce.data.cache.entity.FavoriteEntity
 import com.example.ecommerce.domain.model.Product
 import com.example.ecommerce.presentation.viewmodels.FavoriteViewModel
+import com.google.gson.Gson
 
 
 @Composable
 fun ProductItem(
     product: Product,
     modifier: Modifier = Modifier,
+    navController: NavController,
     viewModel: FavoriteViewModel = hiltViewModel()
 ) {
     Card(
@@ -44,8 +47,8 @@ fun ProductItem(
         backgroundColor = Color.White,
         modifier = Modifier
             .padding(4.dp)
-            .clickable {
-            }
+            .clickable(onClick = {
+            })
     ) {
         Column(
             modifier = Modifier.padding(start = 16.dp, end = 16.dp),
@@ -103,6 +106,7 @@ fun ProductItem(
             )
             Spacer(modifier = Modifier.height(10.dp))
             IconButton(
+                modifier = Modifier,
                 onClick = {
                    viewModel.saveFavorite(
                         FavoriteEntity(

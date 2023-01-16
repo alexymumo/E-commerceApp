@@ -17,7 +17,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ecommerce.presentation.activity.MainActivity
-import com.example.ecommerce.presentation.screens.MainScreen
 
 @Composable
 fun NoInternetItem(context: Context) {
@@ -44,7 +43,7 @@ fun NoInternetItem(context: Context) {
                 val isMobileConnected: Boolean = networkInfo?.isConnected == true
                 if (isMobileConnected) {
                     (context as MainActivity).setContent {
-                        MainScreen()
+                        //MainScreen()
                     }
                 }
             }

@@ -1,3 +1,4 @@
+
 package com.example.ecommerce.presentation.screens
 
 import androidx.compose.foundation.background
@@ -14,6 +15,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.ramcosta.composedestinations.annotation.Destination
 
+@Destination
 @Composable
 fun CartScreen() {
     Column(

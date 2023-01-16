@@ -20,12 +20,15 @@ import com.example.ecommerce.presentation.viewmodels.FavoriteViewModel
 import com.example.ecommerce.presentation.viewmodels.ProductViewModel
 import com.example.ecommerce.presentation.views.CustomSearchBar
 import com.example.ecommerce.presentation.views.ProductItem
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
+@Destination(start = true)
 @Composable
 fun HomeScreen(
+    navigator: DestinationsNavigator,
     viewModel: ProductViewModel = hiltViewModel(),
-    favoriteViewModel: FavoriteViewModel = hiltViewModel(),
-    navController: NavController
+    favoriteViewModel: FavoriteViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.value
     val navController = rememberNavController()
@@ -57,7 +60,7 @@ fun HomeScreen(
         ) {
             items(state.products) { product ->
                 ProductItem(
-                    navController = navController,
+                    navigator = navigator,
                     product = product,
                     modifier = Modifier.width(150.dp),
                     viewModel = favoriteViewModel

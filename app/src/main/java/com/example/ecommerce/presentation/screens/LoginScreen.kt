@@ -7,10 +7,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -30,9 +27,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
+import com.example.ecommerce.presentation.screens.destinations.RegisterScreenDestination
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
+@Destination
 @Composable
-fun LoginScreen() {
+fun LoginScreen(
+    navigator: DestinationsNavigator
+) {
     val navController = rememberNavController()
     Column(modifier = Modifier
         .fillMaxSize()
@@ -41,34 +44,26 @@ fun LoginScreen() {
 
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center
+            horizontalArrangement = Arrangement.Start
         ) {
             Text(
-                text = "Hello Again!",
+                text = "Login",
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.Bold,
                 fontSize = 24.sp
             )
         }
-        Spacer(modifier = Modifier.height(20.dp))
-        Column(
+        Spacer(modifier = Modifier.height(5.dp))
+        Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalArrangement = Arrangement.Start
         ) {
             Text(
-                text = "Fill Your Details Or Continue With",
+                text = "Sign to you account",
                 fontWeight = FontWeight.Bold,
                 color = Color.Gray,
                 overflow = TextOverflow.Clip,
                 fontSize = 17.sp,
-                textAlign = TextAlign.Center
-            )
-            Text(
-                text = "Social Media",
-                color = Color.Gray,
-                overflow = TextOverflow.Clip,
-                fontSize = 17.sp,
-                fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center
             )
         }
@@ -76,27 +71,25 @@ fun LoginScreen() {
 
         val value: String by remember { mutableStateOf("") }
         Text(
-            text = "Email Address",
+            text = "Email",
             fontWeight = FontWeight.Normal,
             fontSize = 16.sp,
             color = Color.Black,
             textAlign = TextAlign.Start
         )
         Spacer(modifier = Modifier.height(10.dp))
-        TextField(
+        OutlinedTextField(
             shape = MaterialTheme.shapes.medium,
             value = value,
-            placeholder = {
-                Text(text = "xyz@gmail.com")
+            label = {
+                Text(text = "Email")
             },
             maxLines = 1,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
             onValueChange = {
 
             },
-            modifier = Modifier
-                .fillMaxWidth()
-                .clip(shape = RoundedCornerShape(8.dp))
+            modifier = Modifier.fillMaxWidth()
         )
         Spacer(modifier = Modifier.height(20.dp))
         Text(
@@ -107,20 +100,18 @@ fun LoginScreen() {
             textAlign = TextAlign.Start
         )
         Spacer(modifier = Modifier.height(10.dp))
-        TextField(
+        OutlinedTextField(
             shape = MaterialTheme.shapes.medium,
             value = value,
             maxLines = 1,
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-            placeholder = {
-                Text(text = "......")
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+            label = {
+                Text(text = "Password")
             },
             onValueChange = {
 
             },
-            modifier = Modifier
-                .fillMaxWidth()
-                .clip(shape = RoundedCornerShape(8.dp))
+            modifier = Modifier.fillMaxWidth()
         )
         Spacer(modifier = Modifier.height(10.dp))
         Row(
@@ -128,7 +119,7 @@ fun LoginScreen() {
             horizontalArrangement = Arrangement.End
         ) {
             Text(
-                text = "Recovery Password",
+                text = "Forgot Password?",
                 fontSize = 16.sp,
                 color = Color.Gray,
                 textAlign = TextAlign.Left
@@ -141,25 +132,12 @@ fun LoginScreen() {
             modifier = Modifier
                 .fillMaxWidth()
                 .background(Color.Transparent)
-                .clip(RoundedCornerShape(8.dp))
+                .clip(RoundedCornerShape(10.dp))
         ) {
             Text(
                 text = "Sign In"
             )
         }
-        Spacer(modifier = Modifier.height(20.dp))
-        Button(
-            onClick = { },
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(Color.Transparent)
-                .clip(RoundedCornerShape(8.dp))
-        ) {
-            Text(
-                text = "Sign In With Google"
-            )
-        }
-
         Spacer(modifier = Modifier.height(30.dp))
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -167,7 +145,7 @@ fun LoginScreen() {
         ) {
             Text(
                 buildAnnotatedString {
-                    append("New User?")
+                    append("Don't have an account? ")
                     withStyle(style = SpanStyle(fontWeight = FontWeight.Normal)) {
                         append("Create Account")
                     }
@@ -182,5 +160,5 @@ fun LoginScreen() {
 @Preview(name = "Dark Mode", uiMode = Configuration.UI_MODE_NIGHT_NO, showBackground = true)
 @Composable
 fun LoginPreview() {
-    LoginScreen()
+   // LoginScreen()
 }

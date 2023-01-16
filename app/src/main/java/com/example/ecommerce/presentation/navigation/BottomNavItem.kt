@@ -6,31 +6,28 @@ import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.example.ecommerce.presentation.screens.destinations.*
 
 
-sealed class BottomNavItem(
-    val title: String,
-    val route: String,
-    val icon: ImageVector
-) {
+sealed class BottomNavItem(var title: String, val icon: ImageVector, var destination:Destination) {
     object Home : BottomNavItem(
         title = "Home",
-        route = "home",
-        icon = Icons.Outlined.Home
+        icon = Icons.Outlined.Home,
+        destination = HomeScreenDestination
     )
     object Cart : BottomNavItem(
         title = "Cart",
-        route = "cart",
-        icon = Icons.Outlined.ShoppingCart
+        icon = Icons.Outlined.ShoppingCart,
+        destination = CartScreenDestination
     )
     object Favorite : BottomNavItem(
         title = "Favorite",
-        route = "favorite",
-        icon = Icons.Outlined.Favorite
+        icon = Icons.Outlined.Favorite,
+        destination = FavoriteScreenDestination
     )
     object Account : BottomNavItem(
         title = "Account",
-        route = "account",
-        icon = Icons.Outlined.AccountCircle
+        icon = Icons.Outlined.AccountCircle,
+        destination = NotificationScreenDestination
     )
 }

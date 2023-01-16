@@ -11,11 +11,13 @@ import com.example.ecommerce.presentation.screens.RegisterScreen
 
 @Composable
 fun NavigationGraph(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = BottomNavItem.Home.route) {
+
+    /*NavHost(navController = navController, startDestination = BottomNavItem.Home.route) {
+
         composable(BottomNavItem.Home.route) {
             HomeScreen(navController = navController)
         }
-        /*
+
         composable("$route/{product}", arguments = listOf(
                 navArgument("product") {
                     type = NavType.StringType
@@ -27,7 +29,7 @@ fun NavigationGraph(navController: NavHostController) {
                 DetailScreen(product, navController)
             }
         }
-         */
+
 
         composable(BottomNavItem.Favorite.route) {
             FavoriteScreen()
@@ -39,5 +41,7 @@ fun NavigationGraph(navController: NavHostController) {
             LoginScreen()
         }
     }
+
+         */
 
 }

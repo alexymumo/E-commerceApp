@@ -1,6 +1,9 @@
 package com.example.ecommerce.domain.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Product(
     val category: String,
     val description: String,
@@ -9,6 +12,6 @@ data class Product(
     val price: Double,
     val title: String,
     val rating: Rating,
-)
+): Parcelable
 
 

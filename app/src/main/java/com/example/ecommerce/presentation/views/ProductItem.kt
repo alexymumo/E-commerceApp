@@ -30,15 +30,17 @@ import coil.request.ImageRequest
 import com.example.ecommerce.R
 import com.example.ecommerce.data.cache.entity.FavoriteEntity
 import com.example.ecommerce.domain.model.Product
+import com.example.ecommerce.presentation.screens.destinations.DetailScreenDestination
 import com.example.ecommerce.presentation.viewmodels.FavoriteViewModel
 import com.google.gson.Gson
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 
 @Composable
 fun ProductItem(
     product: Product,
     modifier: Modifier = Modifier,
-    navController: NavController,
+    navigator: DestinationsNavigator,
     viewModel: FavoriteViewModel = hiltViewModel()
 ) {
     Card(
@@ -48,6 +50,7 @@ fun ProductItem(
         modifier = Modifier
             .padding(4.dp)
             .clickable(onClick = {
+                navigator.navigate(DetailScreenDestination(product))
             })
     ) {
         Column(

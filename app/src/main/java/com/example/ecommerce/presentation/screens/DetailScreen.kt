@@ -10,10 +10,12 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -21,24 +23,58 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.example.ecommerce.R
 import com.example.ecommerce.domain.model.Product
+import com.example.ecommerce.presentation.views.ProductItem
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
+@Destination
 @Composable
 fun DetailScreen(
     product: Product,
-    navController: NavController
+    navigator: DestinationsNavigator
+) {
+    Scaffold(
+        topBar = {
+            Row {
+                IconButton(onClick = {
+                    navigator.popBackStack()
+                }) {
+                    Icon(painter = painterResource(id = R.drawable.star), contentDescription = null)
+                }
+            }
+        }
+    ){
+        DetailItem(product = product)
+    }
+
+}
+
+@Composable
+fun DetailItem(
+    product: Product
 ) {
     Column(modifier = Modifier.fillMaxSize()) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(300.dp)
+                .height(300.dp),
+            horizontalArrangement = Arrangement.Center
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.img),
-                contentDescription = null,
-                contentScale = ContentScale.Fit
+            AsyncImage(
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(product.image)
+                    .crossfade(true)
+                    .build(),
+                contentScale = ContentScale.Fit,
+                modifier = Modifier
+                    .height(100.dp)
+                    .width(100.dp)
+                ,
+                contentDescription = "product image"
             )
         }
         Spacer(modifier = Modifier.height(5.dp))
@@ -144,17 +180,11 @@ fun DetailScreen(
 
         }
     }
+
 }
-
-
-@Preview
+/*
 @Composable
-fun DetailScreenPreview() {
-    //DetailScreen()
-}
-
-@Composable
-fun DetailItem() {
+fun DetailItem(product: Product) {
     ConstraintLayout(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -180,8 +210,10 @@ fun DetailItem() {
     }
 }
 
+ */
+
 @Preview
 @Composable
 fun DetailItemPreview() {
-    DetailItem()
+    //DetailItem()
 }

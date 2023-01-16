@@ -10,7 +10,9 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.ecommerce.presentation.viewmodels.FavoriteViewModel
 import com.example.ecommerce.presentation.views.FavoriteCard
+import com.ramcosta.composedestinations.annotation.Destination
 
+@Destination
 @Composable
 fun FavoriteScreen(
     viewModel: FavoriteViewModel = hiltViewModel()

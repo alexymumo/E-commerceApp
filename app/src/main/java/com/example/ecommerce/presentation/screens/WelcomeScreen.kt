@@ -13,6 +13,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.ecommerce.R
 import com.example.ecommerce.presentation.screens.destinations.LoginScreenDestination
 import com.example.ecommerce.presentation.screens.destinations.RegisterScreenDestination
@@ -65,5 +66,5 @@ fun WelcomeScreen(navigator: DestinationsNavigator) {
 @Preview
 @Composable
 fun WelcomeScreenPreview() {
-    //WelcomeScreen()
+
 }

@@ -13,6 +13,6 @@ import com.example.ecommerce.data.cache.entity.ProductEntity
     version = 2
 )
 abstract class AppDatabase: RoomDatabase() {
-    abstract fun favoriteDao() : FavoriteDao
+    abstract val favoriteDao : FavoriteDao
     abstract val productsDao: ProductDao
 }

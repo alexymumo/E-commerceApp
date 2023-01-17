@@ -25,7 +25,8 @@ class ProductRepositoryImpl @Inject constructor(
     override suspend fun fetchProducts(): Flow<Resource<List<Product>>> = flow {
         emit(Resource.Loading())
         val getProductsFromDb = productsDao.getProducts().map { it.toDomain() }
-        Resource.Loading(data = getProductsFromDb)
+        //Resource.Loading(data = getProductsFromDb)
+        Resource.Success(data = getProductsFromDb)
 
         try {
             val apiResponse = fakeStoreApi.getProducts()

@@ -34,7 +34,7 @@ fun MainScreen(
                     backgroundColor = Color.Cyan,
                     contentColor = Color.Black,
                     modifier = Modifier
-                        .padding(top = 15.dp, end = 15.dp, bottom = 15.dp, start = 15.dp)
+                        .padding(end = 15.dp, bottom = 15.dp, start = 15.dp)
                         .clip(RoundedCornerShape(15.dp, 15.dp, 15.dp, 15.dp))
                         .fillMaxWidth()
                 ) {

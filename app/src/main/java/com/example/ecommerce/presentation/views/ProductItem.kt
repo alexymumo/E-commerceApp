@@ -40,8 +40,7 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 fun ProductItem(
     product: Product,
     modifier: Modifier = Modifier,
-    navigator: DestinationsNavigator,
-    viewModel: FavoriteViewModel = hiltViewModel()
+    navigator: DestinationsNavigator
 ) {
     Card(
         elevation = 5.dp,
@@ -66,8 +65,7 @@ fun ProductItem(
                 modifier = Modifier
                     .height(100.dp)
                     .width(100.dp)
-                    .align(CenterHorizontally)
-                ,
+                    .align(CenterHorizontally),
                 contentDescription = "product image"
             )
             Spacer(modifier = Modifier.height(10.dp))
@@ -107,27 +105,6 @@ fun ProductItem(
                 textAlign = TextAlign.Start,
                 color = Color.Black
             )
-            Spacer(modifier = Modifier.height(10.dp))
-            IconButton(
-                modifier = Modifier,
-                onClick = {
-                   viewModel.saveFavorite(
-                        FavoriteEntity(
-                            id = product.id,
-                            category = product.category,
-                            description = product.description,
-                            image = product.image,
-                            price = product.price,
-                            title = product.title
-                        )
-                    )
-                }) {
-                Icon(
-                    Icons.Outlined.FavoriteBorder,
-                    tint = Color.Green,
-                    contentDescription = "favorite"
-                )
-            }
         }
     }
 

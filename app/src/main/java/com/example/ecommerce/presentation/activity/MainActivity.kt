@@ -41,7 +41,7 @@ class MainActivity : ComponentActivity() {
                 EcommerceTheme {
                     Surface(
                         modifier = Modifier.fillMaxSize(),
-                        color = MaterialTheme.colors.background
+                        color = MaterialTheme.colors.onPrimary
                     ) {
                         val navController = rememberNavController()
                         val navHostEngine = rememberNavHostEngine()

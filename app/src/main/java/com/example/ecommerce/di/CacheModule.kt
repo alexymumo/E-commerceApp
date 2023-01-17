@@ -34,7 +34,7 @@ object CacheModule {
     @Provides
     @Singleton
     fun providesRepository(appDatabase: AppDatabase): FavoriteRepository {
-        return FavoriteRepositoryImpl(appDatabase.favoriteDao())
+        return FavoriteRepositoryImpl(appDatabase.favoriteDao)
     }
 
     /*

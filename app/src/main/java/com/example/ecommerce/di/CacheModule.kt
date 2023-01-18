@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import com.example.ecommerce.data.cache.dao.FavoriteDao
 import com.example.ecommerce.data.cache.database.AppDatabase
-import com.example.ecommerce.data.repository.FavoriteRepository
 import com.example.ecommerce.data.repository.FavoriteRepositoryImpl
+import com.example.ecommerce.domain.repository.FavoriteRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,13 +36,4 @@ object CacheModule {
     fun providesRepository(appDatabase: AppDatabase): FavoriteRepository {
         return FavoriteRepositoryImpl(appDatabase.favoriteDao)
     }
-
-    /*
-    @Provides
-    @Singleton
-    fun providesDao(appDatabase: AppDatabase): FavoriteDao {
-        return appDatabase.favoriteDao()
-    }
-
-     */
 }

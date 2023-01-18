@@ -5,7 +5,8 @@ import com.example.ecommerce.data.cache.entity.RatingEntity
 import com.example.ecommerce.domain.model.Product
 import com.example.ecommerce.domain.model.Rating
 
-fun ProductEntity.toDomain(): Product {
+
+internal fun ProductEntity.toDomain(): Product {
     return Product(
         this.category,
         this.description,
@@ -17,9 +18,10 @@ fun ProductEntity.toDomain(): Product {
     )
 }
 
-fun RatingEntity.toDomain(): Rating {
+internal fun RatingEntity.toDomain(): Rating {
     return Rating(
         this.count,
         this.rate
     )
 }
+

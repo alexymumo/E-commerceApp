@@ -18,10 +18,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ecommerce.R
+import com.example.ecommerce.data.cache.entity.FavoriteEntity
 
 
 @Composable
-fun FavoriteItem() {
+fun FavoriteItem(favoriteEntity: FavoriteEntity) {
     Card(
         elevation = 20.dp,
         shape = RoundedCornerShape(8.dp),
@@ -42,13 +43,13 @@ fun FavoriteItem() {
                 modifier = Modifier.size(80.dp)
             )
             Text(
-                text = "Nike Jordan",
+                text = favoriteEntity.title,
                 fontWeight = FontWeight.Bold,
                 fontSize = 18.sp
             )
             Spacer(modifier = Modifier.height(5.dp))
             Text(
-                text = "$34.90",
+                text = favoriteEntity.price.toString(),
                 fontSize = 16.sp
             )
         }
@@ -59,5 +60,5 @@ fun FavoriteItem() {
 @Preview
 @Composable
 fun FavoriteItemPreview() {
-    FavoriteItem()
+    //FavoriteItem()
 }

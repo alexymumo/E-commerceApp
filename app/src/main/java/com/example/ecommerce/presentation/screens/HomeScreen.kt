@@ -1,11 +1,13 @@
 package com.example.ecommerce.presentation.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
@@ -99,10 +101,13 @@ fun HomeScreen(
 @Composable
 fun CategoryItem() {
     Text(
-        text = "All Shoes",
+        text = "Shoes",
         maxLines = 1,
-        modifier = Modifier.
-        clip(RoundedCornerShape(8.dp))
+        modifier = Modifier.border(
+            width = 1.dp,
+            shape = CircleShape,
+            color = Color.Gray
+        ).background(Color.White)
     )
 }
 @Preview

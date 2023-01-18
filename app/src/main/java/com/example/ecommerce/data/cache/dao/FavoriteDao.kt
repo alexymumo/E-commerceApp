@@ -7,15 +7,17 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy.IGNORE
 import androidx.room.Query
 import com.example.ecommerce.data.cache.entity.FavoriteEntity
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface FavoriteDao {
     @Insert(onConflict = IGNORE)
     suspend fun saveProduct(favoriteEntity: FavoriteEntity)
 
-    @Query("SELECT * FROM product_table")
-    fun getAllProducts() : Flow<List<FavoriteEntity>>
+    @Query("SELECT * FROM favorite_table ORDER BY id DESC")
+    fun getProducts() : LiveData<List<FavoriteEntity>>
+
+    @Query("SELECT `favorite` FROM favorite_table WHERE id == :id")
+    fun isFavorite(id: Int): LiveData<Boolean>
 
     @Delete
     suspend fun deleteFavorite(favoriteEntity: FavoriteEntity)

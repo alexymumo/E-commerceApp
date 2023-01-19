@@ -75,8 +75,12 @@ dependencies {
     implementation 'io.github.raamcosta.compose-destinations:core:1.5.9-beta'
     ksp 'io.github.raamcosta.compose-destinations:ksp:1.5.9-beta'
 
+    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
+
     // Constraintlayout
     implementation "androidx.constraintlayout:constraintlayout-compose:$constraintlayout_version"
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1'
 
     // Room
     implementation "androidx.room:room-runtime:$room_version"
@@ -91,11 +95,13 @@ dependencies {
     // Fonts
     implementation "androidx.compose.ui:ui-text-google-fonts:1.3.3"
 
+    // Splashscreen
+    implementation 'androidx.core:core-splashscreen:1.0.0'
+
 
     implementation "com.google.dagger:hilt-android:$hilt_version"
     implementation 'androidx.hilt:hilt-navigation-compose:1.1.0-alpha01'
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
-    //implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
     kapt 'androidx.hilt:hilt-compiler:1.0.0'
 
     // Coil
@@ -119,6 +125,7 @@ dependencies {
     // Coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_testing"
 
     // accompanist
     implementation "com.google.accompanist:accompanist-pager:$accompanist_version"
@@ -135,6 +142,18 @@ dependencies {
     androidTestImplementation "androidx.test:rules:1.4.0"
     androidTestImplementation "androidx.test:runner:1.5.2"
     androidTestImplementation "androidx.test:core-ktx:1.4.0"
+
+
+    testImplementation "junit:junit:$junit_test_version"
+    testImplementation "io.mockk:mockk:$mockk_version"
+    testImplementation "com.google.truth:truth:$truth_version"
+    testImplementation "org.mockito.kotlin:mockito-kotlin:$mockito_version"
+    testImplementation "org.mockito:mockito-inline:3.11.2"
+    testImplementation "androidx.arch.core:core-testing:$arch_core_testing"
+    testImplementation "org.robolectric:robolectric:$roboelectric_version"
+    androidTestImplementation "androidx.test.ext:junit:$junit_android_test_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_android_test_version"
+    implementation "com.squareup.okhttp3:mockwebserver:$mockwebserver_version"
 
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui_version"

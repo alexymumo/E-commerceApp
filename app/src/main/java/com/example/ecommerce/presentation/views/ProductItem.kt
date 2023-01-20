@@ -24,19 +24,23 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.ecommerce.R
 import com.example.ecommerce.data.cache.entity.FavoriteEntity
 import com.example.ecommerce.domain.model.Product
+import com.example.ecommerce.presentation.screens.destinations.DetailScreenDestination
 import com.example.ecommerce.presentation.viewmodels.FavoriteViewModel
+import com.google.gson.Gson
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 
 @Composable
 fun ProductItem(
     product: Product,
     modifier: Modifier = Modifier,
-    viewModel: FavoriteViewModel = hiltViewModel()
+    navigator: DestinationsNavigator
 ) {
     Card(
         elevation = 5.dp,
@@ -44,8 +48,9 @@ fun ProductItem(
         backgroundColor = Color.White,
         modifier = Modifier
             .padding(4.dp)
-            .clickable {
-            }
+            .clickable(onClick = {
+                navigator.navigate(DetailScreenDestination(product))
+            })
     ) {
         Column(
             modifier = Modifier.padding(start = 16.dp, end = 16.dp),
@@ -60,8 +65,7 @@ fun ProductItem(
                 modifier = Modifier
                     .height(100.dp)
                     .width(100.dp)
-                    .align(CenterHorizontally)
-                ,
+                    .align(CenterHorizontally),
                 contentDescription = "product image"
             )
             Spacer(modifier = Modifier.height(10.dp))
@@ -101,26 +105,6 @@ fun ProductItem(
                 textAlign = TextAlign.Start,
                 color = Color.Black
             )
-            Spacer(modifier = Modifier.height(10.dp))
-            IconButton(
-                onClick = {
-                   viewModel.saveFavorite(
-                        FavoriteEntity(
-                            id = product.id,
-                            category = product.category,
-                            description = product.description,
-                            image = product.image,
-                            price = product.price,
-                            title = product.title
-                        )
-                    )
-                }) {
-                Icon(
-                    Icons.Outlined.FavoriteBorder,
-                    tint = Color.Green,
-                    contentDescription = "favorite"
-                )
-            }
         }
     }
 

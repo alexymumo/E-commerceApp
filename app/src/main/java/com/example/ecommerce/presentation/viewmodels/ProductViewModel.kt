@@ -5,20 +5,27 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ecommerce.common.Resource
+import com.example.ecommerce.domain.model.Product
 import com.example.ecommerce.domain.usecase.GetProductsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @HiltViewModel
 class ProductViewModel @Inject constructor(private val getProductsUseCase: GetProductsUseCase) : ViewModel() {
+    private val _products = MutableStateFlow<Resource<List<Product>>>(Resource.Loading(data = null))
+    val product: StateFlow<Resource<List<Product>>> = _products
+
     private val _state = mutableStateOf(ProductState())
     val state: State<ProductState> = _state
 
     init {
         getProducts()
     }
+
     private fun getProducts() {
         getProductsUseCase().onEach { item ->
             when(item) {

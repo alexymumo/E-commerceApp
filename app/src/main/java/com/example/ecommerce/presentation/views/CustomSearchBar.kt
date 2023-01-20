@@ -1,8 +1,6 @@
 package com.example.ecommerce.presentation.views
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
@@ -23,25 +21,29 @@ import androidx.compose.ui.unit.sp
 
 
 @Composable
-fun CustomSearchBar() {
+fun CustomSearchBar(
+    modifier: Modifier = Modifier
+) {
     val value: String by remember { mutableStateOf("") }
     Row(
         modifier = Modifier.fillMaxWidth()
     ) {
-        TextField(
+        OutlinedTextField(
             value = value,
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxWidth()
-                .clip(shape = RoundedCornerShape(8.dp)),
+                .heightIn(min = 50.dp),
             shape = MaterialTheme.shapes.medium,
             maxLines = 1,
+            colors = TextFieldDefaults.textFieldColors(
+                backgroundColor = MaterialTheme.colors.surface
+            ),
             singleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
             placeholder = {
                 Text(
                     text = "Search...",
-                    color = Color.Gray,
-                    fontSize = 16.sp
+                    color = Color.Gray
                 )
             },
             onValueChange = {

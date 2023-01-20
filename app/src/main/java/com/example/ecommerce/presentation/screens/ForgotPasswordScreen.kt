@@ -35,7 +35,7 @@ fun ForgotPasswordScreen() {
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center
+            horizontalArrangement = Arrangement.Start
         ) {
             Text(
                 text = "Forgot Password",
@@ -47,22 +47,14 @@ fun ForgotPasswordScreen() {
         Spacer(modifier = Modifier.height(20.dp))
         Column(
             modifier = Modifier.fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.Start
         ) {
             Text(
-                text = "Enter Your Email Account To Reset",
+                text = "Enter Your Email To Reset Password",
                 fontWeight = FontWeight.Bold,
                 color = Color.Gray,
                 overflow = TextOverflow.Clip,
                 fontSize = 17.sp,
-                textAlign = TextAlign.Center
-            )
-            Text(
-                text = "Your Password",
-                color = Color.Gray,
-                overflow = TextOverflow.Clip,
-                fontSize = 17.sp,
-                fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center
             )
         }
@@ -75,7 +67,7 @@ fun ForgotPasswordScreen() {
             maxLines = 1,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
             placeholder = {
-                Text(text = "xxxxx")
+                Text(text = "Email")
             },
             onValueChange = {
 

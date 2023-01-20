@@ -40,7 +40,7 @@ class FavoriteDaoTest {
             "new",
             "23",
             "image",
-            "23",
+            23.3,
             "Watch"
         )
         favoriteDao.saveProduct(product)

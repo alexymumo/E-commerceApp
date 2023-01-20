@@ -1,22 +1,26 @@
 package com.example.ecommerce.presentation.screens
 
+import android.graphics.drawable.Icon
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Person
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -26,9 +30,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.ecommerce.presentation.viewmodels.ProductViewModel
 import com.example.ecommerce.presentation.views.CustomSearchBar
 import com.example.ecommerce.presentation.views.ProductItem
-import com.example.ecommerce.presentation.views.TopBar
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import com.example.ecommerce.R
+import com.example.ecommerce.presentation.views.HomeToolBar
 
 @Destination(start = true)
 @Composable
@@ -38,22 +43,7 @@ fun HomeScreen(
 ) {
     Scaffold(
         topBar = {
-            Row(
-                horizontalArrangement = Arrangement.Center
-            ) {
-                TopAppBar(
-                    modifier = Modifier.fillMaxWidth(),
-                    contentColor = Color.Black,
-                    backgroundColor = Color.White
-                ) {
-                    Text(
-                        text = "Explore",
-                        textAlign = TextAlign.Center,
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                }
-            }
+            HomeToolBar()
         }
     ) {
         val state = viewModel.state.value
@@ -61,7 +51,6 @@ fun HomeScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(10.dp)
-                .testTag("HomeScreen")
         ) {
             CustomSearchBar()
             Spacer(modifier = Modifier.height(10.dp))
@@ -96,18 +85,18 @@ fun HomeScreen(
     }
 }
 
-
-
 @Composable
 fun CategoryItem() {
     Text(
         text = "Shoes",
         maxLines = 1,
-        modifier = Modifier.border(
-            width = 1.dp,
-            shape = CircleShape,
-            color = Color.Gray
-        ).background(Color.White)
+        modifier = Modifier
+            .border(
+                width = 1.dp,
+                shape = CircleShape,
+                color = Color.Gray
+            )
+            .background(Color.White)
     )
 }
 @Preview

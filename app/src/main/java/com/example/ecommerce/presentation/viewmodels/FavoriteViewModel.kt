@@ -2,28 +2,24 @@ package com.example.ecommerce.presentation.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.ecommerce.data.cache.entity.FavoriteEntity
+import com.example.ecommerce.domain.model.Favorite
 import com.example.ecommerce.domain.repository.FavoriteRepository
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class FavoriteViewModel @Inject constructor(private val favoriteRepository: FavoriteRepository): ViewModel() {
+class FavoriteViewModel(private val favoriteRepository: FavoriteRepository): ViewModel() {
 
     val favorites = favoriteRepository.getFavorites()
 
-    fun saveFavorite(favoriteEntity: FavoriteEntity) {
+    fun saveFavorite(favorite: Favorite) {
         viewModelScope.launch(Dispatchers.IO) {
-            favoriteRepository.saveProduct(favoriteEntity)
+            favoriteRepository.saveProduct(favorite)
         }
     }
 
-    fun deleteFavorite(favoriteEntity: FavoriteEntity) {
+    fun deleteFavorite(favorite: Favorite) {
         viewModelScope.launch(Dispatchers.IO) {
-            favoriteRepository.deleteFavorite(favoriteEntity)
+            favoriteRepository.deleteFavorite(favorite)
         }
     }
 }

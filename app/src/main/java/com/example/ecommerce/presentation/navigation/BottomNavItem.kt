@@ -8,7 +8,6 @@ import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.ecommerce.presentation.screens.destinations.*
 
-
 sealed class BottomNavItem(var title: String, val icon: ImageVector, var destination:Destination) {
     object Home : BottomNavItem(
         title = "Home",

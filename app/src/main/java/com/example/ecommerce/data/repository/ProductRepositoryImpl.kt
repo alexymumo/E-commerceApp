@@ -42,20 +42,3 @@ class ProductRepositoryImpl @Inject constructor(
         emit(Resource.Success(products))
     }
 }
-
-/*
-override suspend fun getProducts(): Flow<NetworkResult<List<Product>>> = flow {
-    emit(NetworkResult.Loading(true))
-
-
-    try {
-        val product = apiService.getProducts()
-        emit(NetworkResult.Success(product))
-    } catch (e: IOException) {
-        emit(NetworkResult.Failure(errorMessage = "Error occurred"))
-    } catch (e: HttpException) {
-        emit(NetworkResult.Failure(errorMessage = "Something went wrong"))
-    }
-}
-
- */

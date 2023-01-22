@@ -13,6 +13,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.ExperimentalTextApi
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.ecommerce.presentation.navigation.MainScreen
@@ -30,6 +31,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @OptIn(ExperimentalTextApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val connectionManager = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -41,7 +43,7 @@ class MainActivity : ComponentActivity() {
                 EcommerceTheme {
                     Surface(
                         modifier = Modifier.fillMaxSize(),
-                        color = MaterialTheme.colors.onPrimary
+                        color = MaterialTheme.colors.background
                     ) {
                         val navController = rememberNavController()
                         val navHostEngine = rememberNavHostEngine()

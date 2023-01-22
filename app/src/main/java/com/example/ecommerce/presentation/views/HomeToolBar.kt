@@ -23,7 +23,7 @@ fun HomeToolBar() {
         ) {
             Text(
                 text = "E-commerce",
-                fontWeight = FontWeight.Normal,
+                fontWeight = FontWeight.Bold,
                 fontSize = 18.sp
             )
         }

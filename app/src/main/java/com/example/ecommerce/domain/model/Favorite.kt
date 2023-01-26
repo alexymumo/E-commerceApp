@@ -1,5 +1,6 @@
 package com.example.ecommerce.domain.model
 
+
 data class Favorite(
     val id: Int,
     val category: String,
@@ -7,7 +8,7 @@ data class Favorite(
     val image: String,
     val price: Double,
     val title: String,
-    val favorite: Boolean,
+    val favorite: Boolean = false,
     val rating: FavoriteRating
 )
 

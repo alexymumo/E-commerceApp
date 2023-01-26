@@ -1,8 +1,6 @@
-
 package com.example.ecommerce.presentation.screens
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -16,12 +14,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ecommerce.R
-import com.example.ecommerce.presentation.views.FavoriteItem
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
@@ -39,16 +35,6 @@ fun CartScreen(
                     Icon(
                         Icons.Default.ArrowBack,
                         contentDescription = null
-                    )
-                }
-                Row(
-                    horizontalArrangement = Arrangement.Center
-                ) {
-                    Text(
-                        text = "My Cart",
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold,
-                        textAlign = TextAlign.Center
                     )
                 }
             }
@@ -83,20 +69,43 @@ fun CartItem() {
                 .padding(5.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.img),
-                contentScale = ContentScale.Inside,
+            Card(
                 modifier = Modifier
-                    .height(80.dp)
-                    .width(80.dp).clip(RoundedCornerShape(8.dp)),
-                contentDescription = "favorite image",
-            )
-            Spacer(modifier = Modifier.width(5.dp))
-            Text(
-                text = "Gray Jacket",
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Bold
-            )
+                    .fillMaxHeight()
+                    .width(100.dp),
+                elevation = 20.dp,
+                shape = RoundedCornerShape(8.dp)
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.img),
+                    contentScale = ContentScale.Inside,
+                    modifier = Modifier
+                        .height(80.dp)
+                        .width(80.dp)
+                        .clip(RoundedCornerShape(8.dp)),
+                    contentDescription = "favorite image",
+                )
+            }
+            Spacer(modifier = Modifier.width(10.dp))
+            Column(
+                verticalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = "Gray Jacket",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = "jewellery",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Thin
+                )
+                Text(
+                    text = "$ 40",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 18.sp
+                )
+            }
         }
     }
 }

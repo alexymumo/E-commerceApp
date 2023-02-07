@@ -9,6 +9,7 @@
 - [Architecture](#architecture)
 - [TechStack](#techstack)
 - [ScreenShots](#screenshots)
+- [Demo](#demo)
 - [Todo](#todo)
 <br>
 
@@ -60,10 +61,16 @@
 </tbody>
 </table>
 
-## Todo
+## Demo
 
 
 https://user-images.githubusercontent.com/56880898/216923866-8f478cf4-d8ea-47a9-9c2b-1a15931decbd.mp4
 
+## Todo
+- Create full [ecommerce api](http://ecommerce_api) in golang
+- Payment intergration(Mpesa,Paypal)
+- Authentication
+- UI improvements
+- CI/CD
 
 
